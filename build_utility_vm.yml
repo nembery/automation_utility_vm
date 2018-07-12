@@ -89,7 +89,7 @@
   - name: Clone boostrapper-ui
     git:
       repo: 'https://github.com/PaloAltoNetworks/panos-bootstrapper-ui.git'
-      dest: /opt/paloaltonetworks/
+      dest: /opt/paloaltonetworks/panos-bootstrapper-ui/
 
   - name: Set up networking
     template:
