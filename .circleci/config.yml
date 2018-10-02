@@ -30,7 +30,7 @@ jobs:
     steps:
       - run: |
           sudo gcloud compute images export --destination-uri gs://vmdk_images/automation-utility-vm.vmdk \
-          --image automation-utility-vm --project automation-utility-vm
+          --image automation-utility-vm --export-format vmdk --project automation-utility-vm
 
 workflows:
   version: 2
