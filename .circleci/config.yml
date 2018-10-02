@@ -42,4 +42,4 @@ workflows:
             - validate-json
       - deploy:
           requires:
-            build-image
+            - build-image
