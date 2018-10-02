@@ -1,7 +1,7 @@
 This project is a packer build file and associated Ansible playbooks 
 to build a PanOS Utility VM on a local laptop.
 
-Usage: packer build -on-error=abort utility_vm.json
+Usage: packer build -on-error=abort utility_vm_vmware.json
 
 Requirements are 
  - Packer https://www.packer.io/docs/

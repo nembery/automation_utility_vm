@@ -91,6 +91,23 @@
       repo: 'https://github.com/PaloAltoNetworks/panos-bootstrapper-ui.git'
       dest: /opt/paloaltonetworks/panos-bootstrapper-ui/
 
+  - name: Copy docker-compose service
+    copy:
+      src: templates/docker-compose.service
+      dest: /etc/systemd/system/docker-compose.service
+
+  - name: enable utility
+    systemd:
+      name: docker-compose
+      daemon_reload: yes
+      enabled: yes
+      state: stopped
+      masked: no
+
+  - name: Build containers
+    command: /usr/local/bin/docker-compose build
+    chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
+
   - name: Set up networking
     template:
       src: templates/interfaces
