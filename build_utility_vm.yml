@@ -47,6 +47,11 @@
       name: ansible
       state: latest
 
+  - name: Install docker-compose
+    pip:
+      name: docker-compose
+      state: latest
+
   - name: Check that ssh key exists exists
     stat:
       path: /home/pan/.ssh/id_rsa
@@ -104,14 +109,14 @@
       state: stopped
       masked: no
 
-  - name: Build containers
-    command: /usr/local/bin/docker-compose build
-    chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
-
-  - name: Set up networking
-    template:
-      src: templates/interfaces
-      dest: /etc/network/interfaces
+#  - name: Build containers
+#    command: /usr/local/bin/docker-compose build
+#    chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
+#
+#  - name: Set up networking
+#    template:
+#      src: templates/interfaces
+#      dest: /etc/network/interfaces
 
   - name: Create banner
     template:
@@ -133,8 +138,8 @@
   - name: Remove old tmp files
     shell: rm -rf /var/tmp/* || exit 0
 
-  - name: Fill up and empty disk
-    shell: dd if=/dev/zero of=/EMPTY bs=1M || rm -r /EMPTY
+#  - name: Fill up and empty disk
+#    shell: dd if=/dev/zero of=/EMPTY bs=1M || rm -r /EMPTY
 
   - name: Sync and Done
     command: sync
