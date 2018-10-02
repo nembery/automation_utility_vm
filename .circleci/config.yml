@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Validate
-          command: chmod +x ./scripts/validate.sh && ./scripts/validate.sh packer utility_vm_gcp
+          command: chmod +x ./scripts/validate.sh && ./scripts/validate.sh utility_vm_gcp
   build-image:
     docker:
       - image: hashicorp/packer:1.2.5
@@ -19,7 +19,7 @@ jobs:
           at: ~/packer
       - run:
           name: Build
-          command: chmod +x ./scripts/build.sh && ./scripts/build.sh packer utility_vm_gcp
+          command: chmod +x ./scripts/build.sh && ./scripts/build.sh utility_vm_gcp
           no_output_timeout: 30m
       - store_artifacts:
           path: build-results
