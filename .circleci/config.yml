@@ -29,6 +29,9 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - run: |
+          gcloud auth activate-service-account --key-file=/root/gcloud-service-key.json
+          gcloud --quiet config set project automation-utility-vm
+          gcloud --quiet config set compute/zone us-central1-b
           gcloud compute images export --destination-uri gs://vmdk_images/automation-utility-vm.vmdk \
           --image automation-utility-vm --export-format vmdk --project automation-utility-vm
 
