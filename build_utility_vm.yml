@@ -42,10 +42,10 @@
       state: latest
       update_cache: yes
 
-  - name: Install Ansible
-    pip:
-      name: ansible
-      state: latest
+#  - name: Install Ansible
+#    pip:
+#      name: ansible
+#      state: latest
 
   - name: Install docker-compose
     pip:
