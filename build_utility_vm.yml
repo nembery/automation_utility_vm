@@ -100,7 +100,8 @@
       name: /opt/paloaltonetworks
       state: directory
 
-  - hostname:
+  - name: set hostname
+    hostname:
       name: pan-utility-vm
 
   - name: Clone boostrapper-ui
@@ -123,6 +124,7 @@
 
   - name: Build containers
     command: /usr/local/bin/docker-compose build
+    args:
       chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
 #
 #  - name: Set up networking
