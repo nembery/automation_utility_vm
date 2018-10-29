@@ -75,6 +75,14 @@
       group: pan
     when: key_exists.stat.exists == false
 
+  - name: Setup SSHD config
+    template:
+      src: templates/sshd_config
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root
+      mode: 0644
+
   - name: Setup SSH keys 
     shell: ssh-keygen -t rsa  -q -f /home/pan/.ssh/id_rsa -N ""
     become_user: pan
@@ -83,6 +91,7 @@
   - name: Adding pan user to docker group
     user:
       name: pan
+      password: $6$6hP94wrlG6k3Au$5MRRrlsD8c0HttRFD9DOXD0bMR3N84CwIN3Ys5bNjjszjSED4c1SS7wWEg7SFhROy39NtXucq9cpBAom4Qusu1
       groups: sudo,docker
       append: yes
 
@@ -90,6 +99,9 @@
     file:
       name: /opt/paloaltonetworks
       state: directory
+
+  - hostname:
+      name: pan-utility-vm
 
   - name: Clone boostrapper-ui
     git:
