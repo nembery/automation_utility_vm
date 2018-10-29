@@ -6,7 +6,7 @@
       "project_id": "automation-utility-vm",
       "source_image_family": "ubuntu-minimal-1604-lts",
       "ssh_username": "pan",
-      "zone": "us-east4",
+      "zone": "us-east4-b",
       "image_licenses": [
         "projects/vm-options/global/licenses/enable-vmx"
       ],
