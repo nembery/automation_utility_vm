@@ -109,9 +109,9 @@
       state: stopped
       masked: no
 
-#  - name: Build containers
-#    command: /usr/local/bin/docker-compose build
-#    chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
+  - name: Build containers
+    command: /usr/local/bin/docker-compose build
+    chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
 #
 #  - name: Set up networking
 #    template:
