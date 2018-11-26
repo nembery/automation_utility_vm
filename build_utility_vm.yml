@@ -42,11 +42,6 @@
       state: latest
       update_cache: yes
 
-#  - name: Install Ansible
-#    pip:
-#      name: ansible
-#      state: latest
-
   - name: Install docker-compose
     pip:
       name: docker-compose
@@ -122,15 +117,10 @@
       state: stopped
       masked: no
 
-  - name: Build containers
-    command: /usr/local/bin/docker-compose build
+  - name: pull containers
+    command: /usr/local/bin/docker-compose pull
     args:
       chdir: /opt/paloaltonetworks/panos-bootstrapper-ui/
-#
-#  - name: Set up networking
-#    template:
-#      src: templates/interfaces
-#      dest: /etc/network/interfaces
 
   - name: Create banner
     template:
@@ -151,9 +141,6 @@
 
   - name: Remove old tmp files
     shell: rm -rf /var/tmp/* || exit 0
-
-#  - name: Fill up and empty disk
-#    shell: dd if=/dev/zero of=/EMPTY bs=1M || rm -r /EMPTY
 
   - name: Sync and Done
     command: sync
